@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b83yxxk0ky8lu"]
+
+[ext_resource type="Script" uid="uid://djhof0nqis8w0" path="res://camera_control.gd" id="1_yglvi"]
+[ext_resource type="PackedScene" uid="uid://dryd46qlsorgy" path="res://SM_turtle.fbx" id="2_jveu0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xa25t"]
+
+[node name="GridCell" type="Area3D" unique_id=132993212]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=723556168]
+shape = SubResource("BoxShape3D_xa25t")
+
+[node name="SM_turtle" parent="." unique_id=754785819 instance=ExtResource("2_jveu0")]
+transform = Transform3D(1500, 0, 0, 0, 1500, 0, 0, 0, 1500, 0, 0, 0)
+
+[node name="CameraPosition" type="Node3D" parent="." unique_id=932757726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74793804, 15.824106, 18.297867)
+script = ExtResource("1_yglvi")
+
+[node name="CameraRotationX" type="Node3D" parent="CameraPosition" unique_id=69981474]
+
+[node name="CameraZoomPivot" type="Node3D" parent="CameraPosition/CameraRotationX" unique_id=1618174740]
+transform = Transform3D(1, 0, 0, 0, 0.76604444, 0.6427876, 0, -0.6427876, 0.76604444, 0, 2.5726573, 2.2682981)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPosition/CameraRotationX/CameraZoomPivot" unique_id=195533272]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 1.7881393e-07, 0, -1.7881393e-07, 1.0000002, 0, -7.3612375, 14.917435)
