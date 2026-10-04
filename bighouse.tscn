@@ -1,17 +1,12 @@
-[gd_scene format=3 uid="uid://dro35h44ibnxc"]
+[gd_scene format=3 uid="uid://br41mrnpoxc1s"]
 
-[ext_resource type="PackedScene" uid="uid://scn6vfxsqfoi" path="res://Static Meshes/SM_TallDoubleHouse.fbx" id="1_e0l7c"]
+[ext_resource type="Script" uid="uid://823xf3yvlw6v" path="res://building.gd" id="1_hls2x"]
+[ext_resource type="PackedScene" uid="uid://scn6vfxsqfoi" path="res://Static Meshes/SM_TallDoubleHouse.fbx" id="2_hls2x"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xa25t"]
+[node name="Big House" type="StaticBody3D" unique_id=1043098822]
+script = ExtResource("1_hls2x")
+size = Vector2(1, 2)
+offset = Vector3(0.5, 0, 0.5)
 
-[node name="Node3D" type="Node3D" unique_id=1997207915]
-
-[node name="SM_TallDoubleHouse" parent="." unique_id=454379994 instance=ExtResource("1_e0l7c")]
-transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 1.6533663, 0, 0)
-
-[node name="Area3D" type="Area3D" parent="SM_TallDoubleHouse" unique_id=1302723217]
-transform = Transform3D(1.5069997, 0, 0, 0, 1.5069997, 0, 0, 0, 1.5069997, -0.005894406, 0.0073494543, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_TallDoubleHouse/Area3D" unique_id=1341750724]
-transform = Transform3D(1.4820179, 0, 0, 0, 1.4820179, 0, 0, 0, 1.4820179, 0, 0.0023387154, 0)
-shape = SubResource("BoxShape3D_xa25t")
+[node name="SM_TallDoubleHouse" parent="." unique_id=1207333477 instance=ExtResource("2_hls2x")]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 2.5, 0, 0)

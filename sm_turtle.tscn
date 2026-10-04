@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dqbd3q5ssscgw"]
+
+[ext_resource type="PackedScene" uid="uid://dryd46qlsorgy" path="res://Static Meshes/SM_turtle.fbx" id="1_lv7cq"]
+
+[node name="SM_turtle" unique_id=1353844715 instance=ExtResource("1_lv7cq")]

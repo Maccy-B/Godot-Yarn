@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmwdomyy8swa5"]
 
-[ext_resource type="Script" uid="uid://djhof0nqis8w0" path="res://camera_control.gd" id="1_u5kg4"]
+[ext_resource type="Script" uid="uid://djhof0nqis8w0" path="res://Grid/camera_control.gd" id="1_u5kg4"]
 
 [node name="camera" type="Node3D" unique_id=778281210]
 
