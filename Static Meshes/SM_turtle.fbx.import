@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dryd46qlsorgy"
-path="res://.godot/imported/SM_turtle.fbx-37d06193fc865f6cf85dc352b7ab85f0.scn"
+path="res://.godot/imported/SM_turtle.fbx-2b6812d171a92e443e34a6c83df3f4fb.scn"
 
 [deps]
 
-source_file="res://SM_turtle.fbx"
-dest_files=["res://.godot/imported/SM_turtle.fbx-37d06193fc865f6cf85dc352b7ab85f0.scn"]
+source_file="res://Static Meshes/SM_turtle.fbx"
+dest_files=["res://.godot/imported/SM_turtle.fbx-2b6812d171a92e443e34a6c83df3f4fb.scn"]
 
 [params]
 

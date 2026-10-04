@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ccwxrv5fc34ah"]
+
+[ext_resource type="Script" uid="uid://1otebxvb5tec" path="res://ui.gd" id="1_27fn8"]
+[ext_resource type="Texture2D" uid="uid://de6vi8jlkftrl" path="res://UI Icons/house picture.png" id="1_m6e0p"]
+[ext_resource type="Texture2D" uid="uid://ctfod677b2svb" path="res://UI Icons/double house picture.png" id="2_27fn8"]
+
+[node name="UI" type="Control" unique_id=1785954812]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_27fn8")
+
+[node name="ItemList" type="ItemList" parent="." unique_id=511470415]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -72.0
+offset_right = 60.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+item_count = 2
+max_columns = 2
+item_0/icon = ExtResource("1_m6e0p")
+item_1/icon = ExtResource("2_27fn8")

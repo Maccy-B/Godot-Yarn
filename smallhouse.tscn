@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://edbhtajdk7yj"]
+
+[ext_resource type="PackedScene" uid="uid://dwtmhgqq2facq" path="res://Static Meshes/SM_House.fbx" id="1_gyyvr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xa25t"]
+
+[node name="Node3D" type="Node3D" unique_id=1997207915]
+
+[node name="SM_House" parent="." unique_id=1326414767 instance=ExtResource("1_gyyvr")]
+transform = Transform3D(300, 0, 0, 0, 300, 0, 0, 0, 300, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="SM_House" unique_id=1302723217]
+transform = Transform3D(1.507, 0, 0, 0, 1.507, 0, 0, 0, 1.507, 0, 0.0073228497, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SM_House/Area3D" unique_id=1341750724]
+shape = SubResource("BoxShape3D_xa25t")

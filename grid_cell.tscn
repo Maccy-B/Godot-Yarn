@@ -1,26 +1,24 @@
 [gd_scene format=3 uid="uid://b83yxxk0ky8lu"]
 
-[ext_resource type="Script" uid="uid://djhof0nqis8w0" path="res://camera_control.gd" id="1_yglvi"]
-[ext_resource type="PackedScene" uid="uid://dryd46qlsorgy" path="res://SM_turtle.fbx" id="2_jveu0"]
+[ext_resource type="PackedScene" uid="uid://dmwdomyy8swa5" path="res://camera.tscn" id="1_jveu0"]
+[ext_resource type="PackedScene" uid="uid://dryd46qlsorgy" path="res://Static Meshes/SM_turtle.fbx" id="2_jveu0"]
+[ext_resource type="PackedScene" uid="uid://ccwxrv5fc34ah" path="res://ui.tscn" id="3_jveu0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xa25t"]
 
 [node name="GridCell" type="Area3D" unique_id=132993212]
 
+[node name="camera" parent="." unique_id=778281210 instance=ExtResource("1_jveu0")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=723556168]
 shape = SubResource("BoxShape3D_xa25t")
 
 [node name="SM_turtle" parent="." unique_id=754785819 instance=ExtResource("2_jveu0")]
-transform = Transform3D(1500, 0, 0, 0, 1500, 0, 0, 0, 1500, 0, 0, 0)
+transform = Transform3D(1500, 0, 0, 0, 1500, 0, 0, 0, 1500, 5.6706486, -2.5607605, 0.84033966)
 
-[node name="CameraPosition" type="Node3D" parent="." unique_id=932757726]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74793804, 15.824106, 18.297867)
-script = ExtResource("1_yglvi")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=719897014]
+transform = Transform3D(0.4991976, -0.30496335, 0.8110482, 0.15985166, 0.9523641, 0.25971156, -0.85161567, 1.2690062e-08, 0.52416676, -31.979563, 22.7097, -1.8983421)
 
-[node name="CameraRotationX" type="Node3D" parent="CameraPosition" unique_id=69981474]
-
-[node name="CameraZoomPivot" type="Node3D" parent="CameraPosition/CameraRotationX" unique_id=1618174740]
-transform = Transform3D(1, 0, 0, 0, 0.76604444, 0.6427876, 0, -0.6427876, 0.76604444, 0, 2.5726573, 2.2682981)
-
-[node name="Camera3D" type="Camera3D" parent="CameraPosition/CameraRotationX/CameraZoomPivot" unique_id=195533272]
-transform = Transform3D(1, 0, 0, 0, 1.0000002, 1.7881393e-07, 0, -1.7881393e-07, 1.0000002, 0, -7.3612375, 14.917435)
+[node name="UI" parent="." unique_id=1785954812 instance=ExtResource("3_jveu0")]
+offset_left = 1.0
+offset_right = 1.0

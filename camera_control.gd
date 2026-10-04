@@ -18,16 +18,24 @@ var mouse_sensitivity = .2
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.is_action_pressed("rotate"):
-		rotate_keys_target -= event.relative.y * mouse_sensitivity
-		rotation_x.rotation_degrees.x = clamp(rotation_x.rotation_degrees.x, -10, 30)
+		rotate_keys_target -= event.relative.x * mouse_sensitivity
+		rotation_x.rotation_degrees.x -= event.relative.y * mouse_sensitivity
+		rotation_x.rotation_degrees.x = clamp(rotation_x.rotation_degrees.x, -100, 300)
 
 func _ready() -> void:
 	move_target = position
 	rotate_keys_target = rotation_degrees.y
 	zoom_target = camera.position.z
+	
+	camera.look_at(position)
 
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("rotate"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if Input.is_action_just_released("rotate"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	var movement_direction = (transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 	var rotate_keys = Input.get_axis("rotate_left", "rotate_right")
@@ -36,6 +44,8 @@ func _process(delta: float) -> void:
 	
 	move_target += move_speed*movement_direction
 	rotate_keys_target += rotate_keys * rotate_keys_speed
+	zoom_target += zoom_dir*zoom_speed
 	
 	position = lerp(position, move_target, 0.05)
 	rotation_degrees.y = lerp(rotation_degrees.y, rotate_keys_target, 0.05)
+	camera.position.z = lerp(camera.position.z, zoom_target, .1)
