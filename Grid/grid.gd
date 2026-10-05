@@ -1,19 +1,19 @@
 @tool
 extends Node3D
 
-@export var gridWidth := 5:
+@export var grid_width := 5:
 	set(value):
-		gridWidth = value
+		grid_width = value
 		_rebuild_grid()
-@export var gridHeight := 5:
+@export var grid_height := 5:
 	set(value):
-		gridHeight = value
+		grid_height = value
 		_rebuild_grid()
-@export var cellSize: Vector2 = Vector2(1, 1):
+@export var cell_size: Vector2 = Vector2(1, 1):
 	set(value):
-		cellSize = value
+		cell_size = value
 		_rebuild_grid()
-@export var defaultColor: Color = Color.GRAY
+@export var default_color: Color = Color.GRAY
 
 const GRID_CELL = preload("res://Grid/grid_cell.tscn")
 
@@ -33,10 +33,10 @@ func _remove_grid():
 		node.queue_free()
 
 func _create_grid():
-	for height in range(gridHeight):
-		for width in range(gridWidth):
-			var gridCell = GRID_CELL.instantiate()
-			gridCell.cellSize = cellSize
-			gridCell.defaultColor = defaultColor
-			add_child(gridCell)
-			gridCell.position = Vector3(width * cellSize.x, 0, height * cellSize.y)
+	for height in range(grid_height):
+		for width in range(grid_width):
+			var grid_cell = GRID_CELL.instantiate()
+			grid_cell.cell_size = cell_size
+			grid_cell.default_color = default_color
+			add_child(grid_cell)
+			grid_cell.position = Vector3(width * cell_size.x, 0, height * cell_size.y)

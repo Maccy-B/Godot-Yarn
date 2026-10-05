@@ -8,9 +8,9 @@ func _ready() -> void:
 		child.position -= offset
 
 func get_rect():
-	var objectPosition = Vector2(
+	var object_position = Vector2(
 		global_position.x - int(size.x/2),
 		global_position.z - int(size.y/2)
 	)
 	
-	return Rect2(objectPosition, size)
+	return Rect2(object_position, size)

@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cdpi1tw586tgw"]
 
-[ext_resource type="Script" uid="uid://b81hwopv4qkr1" path="res://Grid/test.gd" id="1_1roao"]
+[ext_resource type="Script" uid="uid://b81hwopv4qkr1" path="res://Grid/placement.gd" id="1_1roao"]
 [ext_resource type="PackedScene" uid="uid://dmwdomyy8swa5" path="res://camera.tscn" id="2_n67ib"]
 [ext_resource type="PackedScene" uid="uid://coeau336fd20a" path="res://Grid/grid.tscn" id="2_qpsmt"]
 [ext_resource type="PackedScene" uid="uid://ccwxrv5fc34ah" path="res://ui.tscn" id="2_sjpmc"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_xa25t"]
 
-[node name="Test" type="Node3D" unique_id=1374520731]
+[node name="Placement" type="Node3D" unique_id=1374520731]
 script = ExtResource("1_1roao")
 
 [node name="UI" parent="." unique_id=1785954812 instance=ExtResource("2_sjpmc")]
@@ -15,8 +15,10 @@ script = ExtResource("1_1roao")
 [node name="camera" parent="." unique_id=778281210 instance=ExtResource("2_n67ib")]
 
 [node name="Grid" parent="." unique_id=857320878 instance=ExtResource("2_qpsmt")]
-gridWidth = 20
-gridHeight = 20
+grid_width = 20
+grid_height = 20
+cell_size = Vector2(1, 1)
+default_color = Color(0.74509805, 0.74509805, 0.74509805, 1)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1139215995]
 transform = Transform3D(1, 0, 0, 0, 0.7482031, 0.66346973, 0, -0.66346973, 0.7482031, 0, 20.441214, 21.056313)

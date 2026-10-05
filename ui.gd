@@ -6,7 +6,6 @@ const SMALL_HOUSE = preload("res://smallhouse.tscn")
 const BIG_HOUSE = preload("res://bighouse.tscn")
 
 func _on_item_list_item_selected(index: int) -> void:
-	print("item selected: ", index)
 	match index:
 		0: house_selected.emit(SMALL_HOUSE)
 		1: house_selected.emit(BIG_HOUSE)

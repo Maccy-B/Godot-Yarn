@@ -7,15 +7,15 @@ const BIG_HOUSE = preload("res://BigHouse.tscn")
 const SMALL_HOUSE = preload("res://SmallHouse.tscn")
 
 var object
-var isValid = false
-var objectCells
+var is_valid = false
+var object_cells
 
 func _ready() -> void:
 	$UI.house_selected.connect(start_placing)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("place") and object and isValid:
-		_place_placement(objectCells)
+	if event.is_action_pressed("place") and object and is_valid:
+		_place_placement(object_cells)
 	
 	if object and event.is_action_pressed("rotate_building"):
 		object.rotate_y(deg_to_rad(90))
@@ -26,23 +26,22 @@ func _process(delta: float) -> void:
 	var cell = _get_hovered_cell()
 	if cell:
 		_reset_highlight()
-		objectCells = _get_object_cells(cell)
-		isValid = _check_and_highlight_cells(objectCells)
+		object_cells = _get_object_cells(cell)
+		is_valid = _check_and_highlight_cells(object_cells)
 		
 		var size := _get_footprint()
-		var w := int(round(size.x / grid.cellSize.x))
-		var d := int(round(size.y / grid.cellSize.y))
-		# Center the building over the block of cells it covers
-		object.global_position = cell.global_position + Vector3((w - 1) * grid.cellSize.x / 2.0, 0, (d - 1) * grid.cellSize.y / 2.0)
+		var width := int(round(size.x / grid.cell_size.x))
+		var depth := int(round(size.y / grid.cell_size.y))
+		object.global_position = cell.global_position + Vector3((width - 1) * grid.cell_size.x / 2.0, 0, (depth - 1) * grid.cell_size.y / 2.0)
 	
 func _get_grid_position():
-	var mousePositionDepth = 100
-	var mousePosition := get_viewport().get_mouse_position()
-	var currentCamera := get_viewport().get_camera_3d()
+	var mouse_position_depth = 100
+	var mouse_position := get_viewport().get_mouse_position()
+	var current_camera := get_viewport().get_camera_3d()
 	var params := PhysicsRayQueryParameters3D.new()
 	
-	params.from = currentCamera.project_ray_origin(mousePosition)
-	params.to = currentCamera.project_position(mousePosition, mousePositionDepth)
+	params.from = current_camera.project_ray_origin(mouse_position)
+	params.to = current_camera.project_position(mouse_position, mouse_position_depth)
 	params.collide_with_bodies = false
 	params.collide_with_areas = true
 	
@@ -56,34 +55,34 @@ func _get_grid_position():
 		return intersect.collider.global_position
 	else:
 		return
-		
+
 func _reset_highlight():
 	for child in grid.get_children():
-		child.change_color(grid.defaultColor)
+		child.change_color(grid.default_color)
 
 func _get_object_cells(anchor):
 	var cells = []
 	var size := _get_footprint()
-	var w := int(round(size.x / grid.cellSize.x))
-	var d := int(round(size.y / grid.cellSize.y))
+	var w := int(round(size.x / grid.cell_size.x))
+	var d := int(round(size.y / grid.cell_size.y))
 	
 	var index: int = anchor.get_index()
-	var col: int = index % grid.gridWidth
-	var row: int = index / grid.gridWidth
+	var col: int = index % grid.grid_width
+	var row: int = index / grid.grid_width
 	
 	for r in range(row, row + d):
 		for c in range(col, col + w):
-			if c < grid.gridWidth and r < grid.gridHeight:
-				cells.append(grid.get_child(r * grid.gridWidth + c))
+			if c < grid.grid_width and r < grid.grid_height:
+				cells.append(grid.get_child(r * grid.grid_width + c))
 	
 	return cells
 
 func _check_and_highlight_cells(cells: Array):
 	var valid = true
 	var size := _get_footprint()
-	var expected_count := int(round(size.x / grid.cellSize.x)) * int(round(size.y / grid.cellSize.y))
+	var expectedCount := int(round(size.x / grid.cell_size.x)) * int(round(size.y / grid.cell_size.y))
 	
-	if cells.size() != expected_count:
+	if cells.size() != expectedCount:
 		valid = false
 	
 	for cell in cells:
@@ -96,23 +95,23 @@ func _check_and_highlight_cells(cells: Array):
 	return valid
 
 
-func _place_placement(objectCells):
+func _place_placement(object_cells):
 	object = null
-	isValid = null
+	is_valid = null
 	
-	for cell in objectCells:
+	for cell in object_cells:
 		cell.full = true
 	
 	_reset_highlight()
 
 func _get_hovered_cell():
-	var mousePositionDepth = 100
-	var mousePosition := get_viewport().get_mouse_position()
-	var currentCamera := get_viewport().get_camera_3d()
+	var mouse_position_depth = 100
+	var mouse_position := get_viewport().get_mouse_position()
+	var current_camera := get_viewport().get_camera_3d()
 	var params := PhysicsRayQueryParameters3D.new()
 	
-	params.from = currentCamera.project_ray_origin(mousePosition)
-	params.to = currentCamera.project_position(mousePosition, mousePositionDepth)
+	params.from = current_camera.project_ray_origin(mouse_position)
+	params.to = current_camera.project_position(mouse_position, mouse_position_depth)
 	params.collide_with_bodies = false
 	params.collide_with_areas = true
 	
@@ -126,16 +125,13 @@ func _get_hovered_cell():
 
 func _get_footprint() -> Vector2:
 	var size: Vector2 = object.size
-	# Swap width/depth when rotated 90 or 270 degrees
-	var quarter_turns := int(round(object.rotation.y / (PI / 2)))
-	if quarter_turns % 2 != 0:
+	var quarterTurns := int(round(object.rotation.y / (PI / 2)))
+	if quarterTurns % 2 != 0:
 		size = Vector2(size.y, size.x)
 	return size
 
 func start_placing(scene: PackedScene) -> void:
-	# Replace any building that is currently being placed
 	if object:
-		object.queue_free()
 		object = null
 		_reset_highlight()
 	

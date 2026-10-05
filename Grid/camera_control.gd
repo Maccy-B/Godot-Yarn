@@ -24,7 +24,6 @@ func _input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
-	print("camera script ready")
 	move_target = position
 	rotate_keys_target = rotation_degrees.y
 	zoom_target = camera.position.z

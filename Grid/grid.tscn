@@ -4,3 +4,7 @@
 
 [node name="Grid" type="Node3D" unique_id=857320878]
 script = ExtResource("1_ebq2e")
+grid_width = null
+grid_height = null
+cell_size = null
+default_color = null

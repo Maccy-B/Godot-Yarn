@@ -5,7 +5,7 @@
 
 [node name="Big House" type="StaticBody3D" unique_id=1043098822]
 script = ExtResource("1_hls2x")
-size = Vector2(3, 6)
+size = Vector2(4, 8)
 offset = Vector3(0.5, 0, 0.5)
 
 [node name="SM_TallDoubleHouse" parent="." unique_id=1207333477 instance=ExtResource("2_hls2x")]
