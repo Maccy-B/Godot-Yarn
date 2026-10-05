@@ -15,7 +15,6 @@ script = ExtResource("1_1roao")
 [node name="camera" parent="." unique_id=778281210 instance=ExtResource("2_n67ib")]
 
 [node name="Grid" parent="." unique_id=857320878 instance=ExtResource("2_qpsmt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.564409, 0, -9.621855)
 gridWidth = 20
 gridHeight = 20
 

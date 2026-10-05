@@ -21,13 +21,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -72.0
-offset_right = 60.0
-offset_bottom = -9.0
+offset_left = -110.0
+offset_top = -134.0
+offset_right = 108.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
+allow_reselect = true
 item_count = 2
 max_columns = 2
+icon_mode = 0
 item_0/icon = ExtResource("1_m6e0p")
 item_1/icon = ExtResource("2_27fn8")
+
+[connection signal="item_selected" from="ItemList" to="." method="_on_item_list_item_selected"]

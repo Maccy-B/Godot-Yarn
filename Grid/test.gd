@@ -19,10 +19,6 @@ func _input(event: InputEvent) -> void:
 	
 	if object and event.is_action_pressed("rotate_building"):
 		object.rotate_y(deg_to_rad(90))
-		
-	if object:
-		if event.is_action_pressed("rotate_building"):
-			object.rotate_y(deg_to_rad(90))
 
 func _process(delta: float) -> void:
 	if not object: return

@@ -18,11 +18,13 @@ func _ready() -> void:
 	primary_layer = Control.new()
 	primary_layer.name = "PrimaryLayer"
 	primary_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	primary_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	canvas.add_child(primary_layer)
 
 	overlay_layer = Control.new()
 	overlay_layer.name = "OverlayLayer"
 	overlay_layer.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	overlay_layer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	canvas.add_child(overlay_layer)
 
 
