@@ -5,8 +5,8 @@
 
 [node name="SmallHouse" type="StaticBody3D" unique_id=1043098822]
 script = ExtResource("1_ongmf")
-size = Vector2(1, 1)
+size = Vector2(4, 4)
 offset = Vector3(0.5, 0, 0.5)
 
 [node name="SM_House" parent="." unique_id=1326414767 instance=ExtResource("2_1o0rm")]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
+transform = Transform3D(250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 0, 0)

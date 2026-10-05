@@ -16,13 +16,15 @@ var max_zoom = 20.0
 var mouse_sensitivity = .2
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.is_action_pressed("rotate"):
 		rotate_keys_target -= event.relative.x * mouse_sensitivity
 		rotation_x.rotation_degrees.x -= event.relative.y * mouse_sensitivity
-		rotation_x.rotation_degrees.x = clamp(rotation_x.rotation_degrees.x, -100, 300)
+		rotation_x.rotation_degrees.x = clamp(rotation_x.rotation_degrees.x, -80, -10)
+
 
 func _ready() -> void:
+	print("camera script ready")
 	move_target = position
 	rotate_keys_target = rotation_degrees.y
 	zoom_target = camera.position.z
